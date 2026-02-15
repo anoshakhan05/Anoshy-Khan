@@ -1,47 +1,77 @@
 'use client';
 
+import { useEffect, useRef, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Environment, Float, PerspectiveCamera } from '@react-three/drei';
+import { FloatingElements } from '@/components/3d/FloatingElements';
+
 export default function HeroScene() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 1.0;
+            videoRef.current.play().catch(error => {
+                console.error("Video autoplay failed:", error);
+            });
+        }
+    }, []);
+
     return (
-        <div className="absolute inset-0 -z-10 bg-secondary overflow-hidden">
-            {/* Video Background - Base Layer */}
-            {/* Grayscale base to allow tinting without color clashes */}
-            {/* Video Background - Base Layer */}
-            {/* Grayscale base to allow tinting without color clashes */}
+        <div className="absolute inset-0 w-full h-full z-0 bg-secondary overflow-hidden">
+            {/* Layer 1: Video Background */}
             <video
+                ref={videoRef}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover scale-105"
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover scale-105 z-0"
                 style={{
-                    filter: 'grayscale(100%) brightness(1.2) contrast(1.1)',
+                    filter: 'grayscale(0%) brightness(0.8) contrast(1.1)', // Slightly darker to let 3D pop
                 }}
+                src="/assets/hero-video.mp4"
             >
-                <source src="/assets/Whisk_qdm4kdn0idnkbty00szivmytigm3qtlkldmm1cz.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 
-            {/* Tint Overlay 1: Gold Tint */}
-            {/* Soft Light blend mode applies the gold color (#D4AF37) to the greyscale video 
-                creating a metallic premium look */}
+            {/* Layer 2: Gold/Dark Tint Overlays */}
             <div
-                className="absolute inset-0 pointer-events-none mix-blend-soft-light"
-                style={{ backgroundColor: '#D4AF37', opacity: 0.5 }}
+                className="absolute inset-0 pointer-events-none mix-blend-soft-light z-0"
+                style={{ backgroundColor: '#D4AF37', opacity: 0.4 }}
+            />
+            <div
+                className="absolute inset-0 pointer-events-none mix-blend-multiply z-0"
+                style={{ backgroundColor: '#0a0a0a', opacity: 0.3 }}
             />
 
-            {/* Tint Overlay 2: Secondary Darkener */}
-            {/* Multiply blend mode with secondary color (#0a0a0a) to deepen blacks 
-                and ensure text contrast */}
-            <div
-                className="absolute inset-0 pointer-events-none mix-blend-multiply"
-                style={{ backgroundColor: '#0a0a0a', opacity: 0.2 }}
-            />
+            {/* Layer 3: 3D Floating Elements */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <Canvas>
+                    <Suspense fallback={null}>
+                        <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+                        <Environment preset="city" />
 
-            {/* Gradient Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent pointer-events-none" />
+                        <ambientLight intensity={0.5} />
+                        <pointLight position={[10, 10, 10]} intensity={1.5} color="#D4AF37" />
+                        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#4338ca" />
 
-            {/* Optional: Radial Vignette */}
-            <div className="absolute inset-0 bg-radial-gradient from-transparent to-secondary/80 pointer-events-none" />
+                        <Float
+                            speed={2}
+                            rotationIntensity={0.5}
+                            floatIntensity={0.5}
+                            floatingRange={[-0.5, 0.5]}
+                        >
+                            <FloatingElements />
+                        </Float>
+                    </Suspense>
+                </Canvas>
+            </div>
+
+            {/* Layer 4: Gradient Overlay for Text Readability & Smooth Transition */}
+            <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent pointer-events-none z-0" />
+            <div className="absolute inset-0 bg-radial-gradient from-transparent to-secondary/80 pointer-events-none z-0" />
         </div>
     );
 }

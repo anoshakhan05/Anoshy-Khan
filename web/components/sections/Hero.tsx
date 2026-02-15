@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 export function Hero() {
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden" id="hero">
+        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden isolation-isolate" id="hero">
             {/* 3D Background */}
             <HeroScene />
 
