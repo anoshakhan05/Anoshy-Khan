@@ -5,6 +5,8 @@ export default function HeroScene() {
         <div className="absolute inset-0 -z-10 bg-secondary overflow-hidden">
             {/* Video Background - Base Layer */}
             {/* Grayscale base to allow tinting without color clashes */}
+            {/* Video Background - Base Layer */}
+            {/* Grayscale base to allow tinting without color clashes */}
             <video
                 autoPlay
                 loop
@@ -12,7 +14,7 @@ export default function HeroScene() {
                 playsInline
                 className="w-full h-full object-cover scale-105"
                 style={{
-                    filter: 'grayscale(100%) brightness(0.9) contrast(1.1)',
+                    filter: 'grayscale(100%) brightness(1.2) contrast(1.1)',
                 }}
             >
                 <source src="/assets/Whisk_qdm4kdn0idnkbty00szivmytigm3qtlkldmm1cz.mp4" type="video/mp4" />
@@ -24,7 +26,7 @@ export default function HeroScene() {
                 creating a metallic premium look */}
             <div
                 className="absolute inset-0 pointer-events-none mix-blend-soft-light"
-                style={{ backgroundColor: '#D4AF37', opacity: 0.6 }}
+                style={{ backgroundColor: '#D4AF37', opacity: 0.5 }}
             />
 
             {/* Tint Overlay 2: Secondary Darkener */}
@@ -32,7 +34,7 @@ export default function HeroScene() {
                 and ensure text contrast */}
             <div
                 className="absolute inset-0 pointer-events-none mix-blend-multiply"
-                style={{ backgroundColor: '#0a0a0a', opacity: 0.4 }}
+                style={{ backgroundColor: '#0a0a0a', opacity: 0.2 }}
             />
 
             {/* Gradient Overlay for Text Readability */}
