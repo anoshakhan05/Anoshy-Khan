@@ -69,7 +69,8 @@ export function Contact() {
                             const data = Object.fromEntries(formData.entries());
 
                             try {
-                                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact`, {
+                                const apiUrl = process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000');
+                                const response = await fetch(`${apiUrl}/api/contact`, {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify(data),
