@@ -60,24 +60,26 @@ export function Portfolio() {
                         viewport={{ once: true }}
                     >
                         <Card variant="glass" className="h-full flex flex-col group overflow-hidden border-white/5 hover:border-primary/50 transition-colors">
-                            <div className="relative aspect-video bg-accent/30 overflow-hidden">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                    <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
-                                        <Button size="sm" variant="outline" className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100">
+                            <div className="relative aspect-video bg-accent/30 overflow-hidden group/image">
+                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="block w-full h-full cursor-pointer">
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                                        <Button size="sm" variant="outline" className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 pointer-events-none">
                                             <ExternalLink size={16} className="mr-2" /> Live Demo
                                         </Button>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             </div>
 
                             <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold font-heading mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors inline-block w-fit">
+                                    <h3 className="text-xl font-bold font-heading mb-2">{project.title}</h3>
+                                </a>
                                 <p className="text-foreground/60 text-sm mb-6 flex-grow">{project.description}</p>
                                 <div className="flex flex-wrap gap-2">
                                     {project.tags.map(tag => (
