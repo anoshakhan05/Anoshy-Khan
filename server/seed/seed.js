@@ -20,8 +20,7 @@ async function seedDatabase() {
             experience: "5+ Years",
             bio: "I am a results-driven digital marketer with over five years of professional experience, specializing in web development-focused digital marketing solutions. I help brands grow through high-converting websites, performance optimization, and strategic digital execution.",
             socialLinks: {
-                linkedin: "https://linkedin.com/in/anosha-waseem",
-                upwork: "https://www.upwork.com/freelancers/~yourprofile",
+                linkedin: "https://www.linkedin.com/in/anosha-waseem-digitalmarketer/",
             },
         });
 
