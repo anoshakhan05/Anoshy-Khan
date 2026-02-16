@@ -6,6 +6,7 @@ const ProjectSchema = new mongoose.Schema({
     technologies: [{ type: String }],
     category: { type: String, required: true },
     image: { type: String }, // URL or path to image
+    link: { type: String }, // Project URL
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 

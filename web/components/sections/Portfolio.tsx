@@ -9,28 +9,36 @@ import Image from 'next/image';
 
 const projects = [
     {
-        title: "E-Commerce Luxury Brand",
-        category: "Web Development & Strategy",
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop&q=80",
-        description: "A high-conversion e-commerce platform for a luxury fashion brand, result in a 40% increase in sales.",
-        tags: ["Next.js", "Shopify", "SEO"],
-        links: { demo: "#", list: "#" }
+        title: "Noir Threads",
+        category: "E-Commerce / Fashion",
+        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=80",
+        description: "Redefining the silhouette of modern luxury. Premium apparel and avant-garde streetwear platform.",
+        tags: ["Next.js", "E-commerce", "Fashion"],
+        links: { demo: "https://b-xdw1.vercel.app/", list: "#" }
     },
     {
-        title: "FinTech Dashboard",
+        title: "Aura Dashboard",
         category: "UI/UX Design & Dev",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
-        description: "Comprehensive analytics dashboard for a financial tech startup, featuring real-time data visualization.",
-        tags: ["React", "D3.js", "Tailwind"],
-        links: { demo: "#", list: "#" }
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+        description: "Comprehensive analytics dashboard featuring real-time data visualization and management tools.",
+        tags: ["React", "Analytics", "Admin"],
+        links: { demo: "https://dashboard-design-whp7.vercel.app", list: "#" }
     },
     {
-        title: "Healthcare Portal",
-        category: "Full Stack App",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80",
-        description: "Secure patient management system compliant with healthcare regulations, streamlining appointment booking.",
-        tags: ["Node.js", "PostgreSQL", "React"],
-        links: { demo: "#", list: "#" }
+        title: "Life Upgrade",
+        category: "Lifestyle Platform",
+        image: "https://images.unsplash.com/photo-1543353071-873f17a7a088?w=800&auto=format&fit=crop&q=80",
+        description: "A comprehensive lifestyle improvement platform focused on personal growth and wellness tracking.",
+        tags: ["React", "Vite", "Wellness"],
+        links: { demo: "https://life-upgrade-two.vercel.app", list: "#" }
+    },
+    {
+        title: "Luxury Timepieces",
+        category: "E-Commerce",
+        image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&auto=format&fit=crop&q=80",
+        description: "Premium watch showcase and e-commerce platform featuring immersive product presentations.",
+        tags: ["React", "Luxury", "Retail"],
+        links: { demo: "https://watches-lime-ten.vercel.app/", list: "#" }
     }
 ];
 
@@ -60,9 +68,11 @@ export function Portfolio() {
                                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                    <Button size="sm" variant="outline" className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100">
-                                        <ExternalLink size={16} className="mr-2" /> Live Demo
-                                    </Button>
+                                    <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
+                                        <Button size="sm" variant="outline" className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100">
+                                            <ExternalLink size={16} className="mr-2" /> Live Demo
+                                        </Button>
+                                    </a>
                                 </div>
                             </div>
 
