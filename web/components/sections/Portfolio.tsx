@@ -4,53 +4,15 @@ import { Section } from '@/components/layout/Section';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
-
-const projects = [
-    {
-        title: "Lumina AI SaaS",
-        category: "AI Platform / SaaS",
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=80",
-        description: "Next-generation AI platform delivering seamless automation and intelligent insights for enterprise scaling.",
-        tags: ["Next.js", "AI", "SaaS", "Tailwind"],
-        links: { demo: "https://lumina-ai-saas-mx5h.vercel.app/", list: "#" }
-    },
-    {
-        title: "Noir Threads",
-        category: "E-Commerce / Fashion",
-        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=80",
-        description: "Redefining the silhouette of modern luxury. Premium apparel and avant-garde streetwear platform.",
-        tags: ["Next.js", "E-commerce", "Fashion"],
-        links: { demo: "https://b-xdw1.vercel.app/", list: "#" }
-    },
-    {
-        title: "Aura Dashboard",
-        category: "UI/UX Design & Dev",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
-        description: "Comprehensive analytics dashboard featuring real-time data visualization and management tools.",
-        tags: ["React", "Analytics", "Admin"],
-        links: { demo: "https://dashboard-design-whp7.vercel.app", list: "#" }
-    },
-    {
-        title: "Life Upgrade",
-        category: "Lifestyle Platform",
-        image: "https://images.unsplash.com/photo-1543353071-873f17a7a088?w=800&auto=format&fit=crop&q=80",
-        description: "A comprehensive lifestyle improvement platform focused on personal growth and wellness tracking.",
-        tags: ["React", "Vite", "Wellness"],
-        links: { demo: "https://life-upgrade-two.vercel.app", list: "#" }
-    },
-    {
-        title: "Luxury Timepieces",
-        category: "E-Commerce",
-        image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&auto=format&fit=crop&q=80",
-        description: "Premium watch showcase and e-commerce platform featuring immersive product presentations.",
-        tags: ["React", "Luxury", "Retail"],
-        links: { demo: "https://watches-lime-ten.vercel.app/", list: "#" }
-    }
-];
+import Link from 'next/link';
+import { projects } from '@/lib/data';
 
 export function Portfolio() {
+    // Show only the first 3 projects on the homepage
+    const displayedProjects = projects.slice(0, 3);
+
     return (
         <Section id="portfolio" className="bg-secondary/50">
             <div className="text-center mb-16">
@@ -59,7 +21,7 @@ export function Portfolio() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project, index) => (
+                {displayedProjects.map((project, index) => (
                     <motion.div
                         key={index}
                         initial={{ opacity: 1, y: 0 }}
@@ -79,9 +41,9 @@ export function Portfolio() {
                                         quality={75}
                                     />
                                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                        <Button size="sm" variant="outline" className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 pointer-events-none">
+                                        <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 pointer-events-none text-white font-medium flex items-center">
                                             <ExternalLink size={16} className="mr-2" /> Live Demo
-                                        </Button>
+                                        </div>
                                     </div>
                                 </a>
                             </div>
@@ -105,7 +67,9 @@ export function Portfolio() {
             </div>
 
             <div className="text-center mt-12">
-                <Button variant="outline" size="lg">View All Projects</Button>
+                <Link href="/projects">
+                    <Button variant="outline" size="lg">View All Projects</Button>
+                </Link>
             </div>
         </Section>
     );
