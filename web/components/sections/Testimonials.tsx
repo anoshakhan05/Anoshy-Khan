@@ -74,7 +74,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Testimonials Carousel */}
-                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
                     {testimonials.map((testimonial, index) => (
                         <motion.div
                             key={index}
@@ -82,11 +82,11 @@ export function Testimonials() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.2 }}
-                            className="bg-secondary border border-white/5 p-4 md:p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300"
+                            className="bg-secondary border border-white/5 p-3 md:p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300"
                         >
-                            <Quote className="absolute top-4 right-4 md:top-8 md:right-8 text-primary/10 w-6 h-6 md:w-12 md:h-12 group-hover:text-primary/20 transition-colors" />
+                            <Quote className="absolute top-2 right-2 md:top-8 md:right-8 text-primary/10 w-4 h-4 md:w-12 md:h-12 group-hover:text-primary/20 transition-colors" />
 
-                            <p className="text-foreground/80 mb-4 md:mb-8 leading-normal md:leading-relaxed italic relative z-10 text-xs md:text-base line-clamp-4 md:line-clamp-none">
+                            <p className="text-foreground/80 mb-3 md:mb-8 leading-normal md:leading-relaxed italic relative z-10 text-[10px] md:text-base line-clamp-4 md:line-clamp-none">
                                 "{testimonial.quote}"
                             </p>
 
@@ -99,11 +99,11 @@ export function Testimonials() {
                                     />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-foreground text-xs md:text-base">{testimonial.name}</h4>
-                                    <p className="text-[10px] md:text-sm text-primary mb-0.5 md:mb-1">{testimonial.role}</p>
-                                    <div className="flex items-center gap-1 text-[10px] md:text-xs text-foreground/50">
+                                    <h4 className="font-bold text-foreground text-[10px] md:text-base leading-tight">{testimonial.name}</h4>
+                                    <p className="text-[9px] md:text-sm text-primary mb-0.5 md:mb-1 leading-tight">{testimonial.role}</p>
+                                    <div className="flex items-center gap-1 text-[9px] md:text-xs text-foreground/50">
                                         <MapPin className="w-3 h-3 md:w-4 md:h-4" />
-                                        <span className="truncate max-w-[80px] md:max-w-none">{testimonial.location}</span>
+                                        <span className="truncate max-w-[60px] md:max-w-none">{testimonial.location}</span>
                                     </div>
                                 </div>
                             </div>
