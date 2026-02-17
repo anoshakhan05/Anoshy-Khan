@@ -3,47 +3,69 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-outfit);
-  
+
   --animate-float: float 6s ease-in-out infinite;
-  
+
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
   }
 }
 
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  
-  --primary: #D4AF37; /* Gold */
+
+  --primary: #D4AF37;
+  /* Gold */
   --primary-foreground: #000000;
-  
-  --secondary: #0a0a0a; /* Dark background */
+
+  --secondary: #0a0a0a;
+  /* Dark background */
   --secondary-foreground: #ffffff;
-  
-  --accent: #1a1a1a; /* Slightly lighter dark */
+
+  --accent: #1a1a1a;
+  /* Slightly lighter dark */
   --accent-foreground: #D4AF37;
+}
+
+html {
+  overflow-x: hidden;
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }
