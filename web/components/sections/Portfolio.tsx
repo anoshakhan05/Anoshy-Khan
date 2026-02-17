@@ -56,8 +56,8 @@ export function Portfolio() {
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1, duration: 0.5 }}
+                        viewport={{ once: true, margin: "-50px" }}
                     >
                         <Card variant="glass" className="h-full flex flex-col group overflow-hidden border-white/5 hover:border-primary/50 transition-colors">
                             <div className="relative aspect-video bg-accent/30 overflow-hidden group/image">
@@ -66,7 +66,9 @@ export function Portfolio() {
                                         src={project.image}
                                         alt={project.title}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        quality={75}
                                     />
                                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                                         <Button size="sm" variant="outline" className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 pointer-events-none">
