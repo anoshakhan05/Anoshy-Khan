@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import { useState } from 'react';
+import { JourneyModal } from './JourneyModal';
 
 const experiencePoints = [
     "5+ Years of Hands-on Experience",
@@ -14,8 +16,12 @@ const experiencePoints = [
 ];
 
 export function About() {
+    const [isJourneyOpen, setIsJourneyOpen] = useState(false);
+
     return (
         <Section id="about" className="bg-secondary/50">
+            <JourneyModal isOpen={isJourneyOpen} onClose={() => setIsJourneyOpen(false)} />
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Text Content */}
                 <motion.div
@@ -44,7 +50,7 @@ export function About() {
                         ))}
                     </div>
 
-                    <Button variant="outline">Learn More About My Journey</Button>
+                    <Button variant="outline" onClick={() => setIsJourneyOpen(true)}>Learn More About My Journey</Button>
                 </motion.div>
 
                 {/* Visual / Image */}
