@@ -5,7 +5,7 @@ import { useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial, Sphere, Torus, Icosahedron } from '@react-three/drei';
 import * as THREE from 'three';
 
-export function FloatingElements() {
+export function FloatingElements({ isMobile = false }: { isMobile?: boolean }) {
     const groupRef = useRef<THREE.Group>(null);
     const sphereRef = useRef<THREE.Mesh>(null);
     const torusRef = useRef<THREE.Mesh>(null);
@@ -23,20 +23,28 @@ export function FloatingElements() {
 
     return (
         <group ref={groupRef}>
-            {/* Central Abstract Sphere */}
-            <Sphere ref={sphereRef} args={[1.5, 64, 64]} position={[3, 1, 0]}>
-                <MeshDistortMaterial
-                    color="#D4AF37" // Gold
-                    attach="material"
-                    distort={0.4}
-                    speed={1.5}
-                    roughness={0.2}
-                    metalness={0.8}
-                />
+            {/* Central Abstract Sphere - Simplified on Mobile */}
+            <Sphere ref={sphereRef} args={[1.5, isMobile ? 32 : 64, isMobile ? 32 : 64]} position={[3, 1, 0]}>
+                {isMobile ? (
+                    <meshStandardMaterial
+                        color="#D4AF37"
+                        roughness={0.2}
+                        metalness={0.8}
+                    />
+                ) : (
+                    <MeshDistortMaterial
+                        color="#D4AF37" // Gold
+                        attach="material"
+                        distort={0.4}
+                        speed={1.5}
+                        roughness={0.2}
+                        metalness={0.8}
+                    />
+                )}
             </Sphere>
 
             {/* Background Torus Ring */}
-            <Torus ref={torusRef} args={[4, 0.1, 16, 100]} position={[0, 0, -5]} rotation={[Math.PI / 3, 0, 0]}>
+            <Torus ref={torusRef} args={[4, 0.1, isMobile ? 8 : 16, isMobile ? 50 : 100]} position={[0, 0, -5]} rotation={[Math.PI / 3, 0, 0]}>
                 <meshStandardMaterial color="#ffffff" roughness={0.1} metalness={0.9} transparent opacity={0.3} />
             </Torus>
 
@@ -45,8 +53,8 @@ export function FloatingElements() {
                 <meshStandardMaterial color="#1a1a1a" roughness={0.0} metalness={1.0} emissive="#D4AF37" emissiveIntensity={0.2} />
             </Icosahedron>
 
-            {/* Particles */}
-            {Array.from({ length: 20 }).map((_, i) => (
+            {/* Particles - Reduced count on mobile */}
+            {Array.from({ length: isMobile ? 5 : 20 }).map((_, i) => (
                 <mesh
                     key={i}
                     position={[
@@ -55,7 +63,7 @@ export function FloatingElements() {
                         (Math.random() - 0.5) * 10 - 5
                     ]}
                 >
-                    <sphereGeometry args={[0.03, 16, 16]} />
+                    <sphereGeometry args={[0.03, 8, 8]} />
                     <meshStandardMaterial color="#D4AF37" emissive="#D4AF37" emissiveIntensity={2} />
                 </mesh>
             ))}
