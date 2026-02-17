@@ -53,8 +53,8 @@ export function FloatingElements({ isMobile = false }: { isMobile?: boolean }) {
                 <meshStandardMaterial color="#1a1a1a" roughness={0.0} metalness={1.0} emissive="#D4AF37" emissiveIntensity={0.2} />
             </Icosahedron>
 
-            {/* Particles - Reduced count on mobile */}
-            {Array.from({ length: isMobile ? 5 : 20 }).map((_, i) => (
+            {/* Particles - Removed on mobile */}
+            {!isMobile && Array.from({ length: 20 }).map((_, i) => (
                 <mesh
                     key={i}
                     position={[
@@ -63,7 +63,7 @@ export function FloatingElements({ isMobile = false }: { isMobile?: boolean }) {
                         (Math.random() - 0.5) * 10 - 5
                     ]}
                 >
-                    <sphereGeometry args={[0.03, 8, 8]} />
+                    <sphereGeometry args={[0.03, 16, 16]} />
                     <meshStandardMaterial color="#D4AF37" emissive="#D4AF37" emissiveIntensity={2} />
                 </mesh>
             ))}

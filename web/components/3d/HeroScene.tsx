@@ -47,8 +47,8 @@ export default function HeroScene() {
                 />
             )}
 
-            {/* Layer 2: Gold/Dark Tint Overlays - Simplified for Mobile */}
-            {!isMobile ? (
+            {/* Layer 2: Gold/Dark Tint Overlays - Removed on mobile for performance */}
+            {!isMobile && (
                 <>
                     <div
                         className="absolute inset-0 pointer-events-none mix-blend-soft-light z-0"
@@ -59,16 +59,11 @@ export default function HeroScene() {
                         style={{ backgroundColor: '#0a0a0a', opacity: 0.3 }}
                     />
                 </>
-            ) : (
-                <div
-                    className="absolute inset-0 pointer-events-none z-0"
-                    style={{ backgroundColor: '#D4AF37', opacity: 0.1 }} // Simple tint for mobile
-                />
             )}
 
             {/* Layer 3: 3D Floating Elements */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <Canvas dpr={isMobile ? [1, 1.5] : [1, 2]}>
+                <Canvas dpr={isMobile ? [1, 1] : [1, 2]}>
                     <Suspense fallback={null}>
                         <PerspectiveCamera makeDefault position={[0, 0, 10]} />
                         <Environment preset="city" />
