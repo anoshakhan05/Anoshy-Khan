@@ -8,6 +8,7 @@ const testimonials = [
     {
         name: "Sarah Jenkins",
         role: "CEO, TechFlow",
+        // Verified update: 2026-02-18
         location: "New York, USA",
         image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&auto=format&fit=crop&q=60",
         quote: "Anosha transformed our digital presence completely. The 3D elements add a layer of sophistication that our competitors just don't have."
