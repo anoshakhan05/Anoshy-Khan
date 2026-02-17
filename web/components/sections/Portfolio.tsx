@@ -9,6 +9,14 @@ import Image from 'next/image';
 
 const projects = [
     {
+        title: "Lumina AI SaaS",
+        category: "AI Platform / SaaS",
+        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=80",
+        description: "Next-generation AI platform delivering seamless automation and intelligent insights for enterprise scaling.",
+        tags: ["Next.js", "AI", "SaaS", "Tailwind"],
+        links: { demo: "https://lumina-ai-saas-mx5h.vercel.app/", list: "#" }
+    },
+    {
         title: "Noir Threads",
         category: "E-Commerce / Fashion",
         image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=80",

@@ -30,8 +30,8 @@ const testimonials = [
 
 const stats = [
     { label: "Projects Done", value: "45+" },
-    { label: "Happy Clients", value: "30+" },
-    { label: "Countries Served", value: "12+" },
+    { label: "Happy Clients", value: "40+" },
+    { label: "Countries Served", value: "3+" },
 ];
 
 export function Testimonials() {
