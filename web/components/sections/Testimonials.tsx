@@ -25,6 +25,27 @@ const testimonials = [
         location: "London, UK",
         image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&auto=format&fit=crop&q=60",
         quote: "Working with Anosha was a breeze. She understands both the technical and creative sides of web development perfectly."
+    },
+    {
+        name: "Ahmed Khan",
+        role: "CTO, NextGen Sol",
+        location: "Lahore, Pakistan",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&auto=format&fit=crop&q=60",
+        quote: "Absolutely brilliant work! The responsiveness and modern design language exceeded our expectations."
+    },
+    {
+        name: "Fatima Ali",
+        role: "Founder, Artistry",
+        location: "Islamabad, Pakistan",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&auto=format&fit=crop&q=60",
+        quote: "Professionalism at its peak. The project was delivered on time with exceptional quality."
+    },
+    {
+        name: "Omar Farooq",
+        role: "Director, FutureEstates",
+        location: "Dubai, UAE",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=60",
+        quote: "A world-class experience. The attention to UI/UX detail has significantly boosted our client engagement."
     }
 ];
 
@@ -57,7 +78,7 @@ export function Testimonials() {
                 </motion.div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                <div className="grid grid-cols-3 md:grid-cols-3 gap-3 md:gap-8 mb-20 divide-x divide-white/10">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
@@ -65,10 +86,10 @@ export function Testimonials() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-secondary/30 border border-white/5 p-8 rounded-2xl text-center backdrop-blur-sm hover:border-primary/20 transition-colors"
+                            className="bg-transparent p-2 md:p-8 text-center transition-colors"
                         >
-                            <h3 className="text-5xl font-bold text-primary mb-2 font-heading">{stat.value}</h3>
-                            <p className="text-foreground/60 font-medium uppercase tracking-wider text-sm">{stat.label}</p>
+                            <h3 className="text-3xl md:text-5xl font-bold text-primary mb-1 md:mb-2 font-heading">{stat.value}</h3>
+                            <p className="text-foreground/60 font-medium uppercase tracking-wider text-[10px] md:text-sm">{stat.label}</p>
                         </motion.div>
                     ))}
                 </div>
