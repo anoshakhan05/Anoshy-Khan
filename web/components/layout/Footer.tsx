@@ -31,10 +31,7 @@ export function Footer() {
                             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-black transition-colors">
                                 <Linkedin size={20} />
                             </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-black transition-colors">
-                                <Github size={20} />
-                            </a>
-                            <a href="mailto:anosha@example.com" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-black transition-colors">
+                            <a href="mailto:codewithanosha@gmail.com" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-black transition-colors">
                                 <Mail size={20} />
                             </a>
                         </div>
