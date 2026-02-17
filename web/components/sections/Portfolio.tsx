@@ -2,7 +2,7 @@
 
 import { Section } from '@/components/layout/Section';
 import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import { Button, getButtonClasses } from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
@@ -67,8 +67,11 @@ export function Portfolio() {
             </div>
 
             <div className="text-center mt-12">
-                <Link href="/projects">
-                    <Button variant="outline" size="lg">View All Projects</Button>
+                <Link
+                    href="/projects"
+                    className={getButtonClasses({ variant: 'outline', size: 'lg' })}
+                >
+                    View All Projects
                 </Link>
             </div>
         </Section>
