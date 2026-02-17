@@ -57,20 +57,33 @@ interface JourneyModalProps {
     onClose: () => void;
 }
 
+import { createPortal } from 'react-dom';
+import { useEffect, useState } from 'react';
+
+// ... (keep interfaces)
+
 export function JourneyModal({ isOpen, onClose }: JourneyModalProps) {
-    return (
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 bg-background overflow-y-auto custom-scrollbar"
+                    className="fixed inset-0 z-[100] bg-background overflow-y-auto custom-scrollbar"
                 >
                     {/* Fixed Close Button */}
                     <button
                         onClick={onClose}
-                        className="fixed top-6 right-6 z-50 p-4 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-primary hover:text-black transition-all duration-300 group border border-white/10"
+                        className="fixed top-6 right-6 z-[110] p-4 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-primary hover:text-black transition-all duration-300 group border border-white/10"
                     >
                         <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
                     </button>
@@ -151,14 +164,14 @@ export function JourneyModal({ isOpen, onClose }: JourneyModalProps) {
                                                                 {study.challenge}
                                                             </p>
                                                         </div>
-                                                    </div>
-                                                    <div>
-                                                        <h4 className="flex items-center gap-2 text-sm font-bold mb-2 text-green-300/90 uppercase tracking-wide">
-                                                            <Lightbulb size={14} /> The Solution
-                                                        </h4>
-                                                        <p className="text-sm text-foreground/60 leading-relaxed pl-6 border-l border-white/5">
-                                                            {study.solution}
-                                                        </p>
+                                                        <div>
+                                                            <h4 className="flex items-center gap-2 text-sm font-bold mb-2 text-green-300/90 uppercase tracking-wide">
+                                                                <Lightbulb size={14} /> The Solution
+                                                            </h4>
+                                                            <p className="text-sm text-foreground/60 leading-relaxed pl-6 border-l border-white/5">
+                                                                {study.solution}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,6 +213,8 @@ export function JourneyModal({ isOpen, onClose }: JourneyModalProps) {
                     </div>
                 </motion.div>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 }
+
