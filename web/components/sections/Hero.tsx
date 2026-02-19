@@ -6,12 +6,17 @@ import { Button } from '@/components/ui/Button';
 import HeroScene from '@/components/3d/HeroScene';
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export function Hero() {
     return (
         <section className="relative h-screen w-full flex items-center justify-center overflow-hidden isolation-isolate" id="hero">
             {/* 3D Background */}
-            <HeroScene />
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
+                <ErrorBoundary fallback={<div className="absolute inset-0 bg-secondary" />}>
+                    <HeroScene />
+                </ErrorBoundary>
+            </div>
 
             {/* Content Overlay */}
             <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">

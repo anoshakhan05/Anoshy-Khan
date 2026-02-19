@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, Suspense } from 'react';
+import { useEffect, useRef, Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, Float, PerspectiveCamera } from '@react-three/drei';
 import { FloatingElements } from '@/components/3d/FloatingElements';
@@ -9,15 +9,24 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 export default function HeroScene() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const isMobile = useIsMobile();
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        if (!isMobile && videoRef.current) {
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (isMounted && !isMobile && videoRef.current) {
             videoRef.current.playbackRate = 1.0;
             videoRef.current.play().catch(error => {
                 console.error("Video autoplay failed:", error);
             });
         }
-    }, [isMobile]);
+    }, [isMobile, isMounted]);
+
+    if (!isMounted) {
+        return <div className="absolute inset-0 w-full h-full z-0 bg-secondary" />;
+    }
 
     return (
         <div className="absolute inset-0 w-full h-full z-0 bg-secondary overflow-hidden">
