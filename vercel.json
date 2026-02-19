@@ -12,11 +12,19 @@
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
+            "src": "/api/services(.*)",
             "dest": "/api/index.js"
         },
         {
-            "src": "/((?!api/.*).*)",
+            "src": "/api/projects(.*)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/api/users(.*)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/((?!api/services|api/projects|api/users|api/index.js).*)",
             "dest": "/web/$1"
         }
     ]
