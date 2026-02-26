@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import User from './models/User.js';
 import Project from './models/Project.js';
 import Service from './models/Service.js';
+import Contact from './models/Contact.js';
 
 dotenv.config();
 
@@ -87,6 +88,14 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     console.log('Received contact request:', { name, email, subject });
+
+    try {
+        const newContact = new Contact({ name, email, subject, message });
+        await newContact.save();
+        console.log("Contact saved to database");
+    } catch (dbError) {
+        console.error("Database saving error:", dbError);
+    }
 
     const mailOptions = {
         from: email,

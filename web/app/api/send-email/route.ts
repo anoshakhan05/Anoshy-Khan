@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import dbConnect from '@/lib/db';
+import Contact from '@/models/Contact';
 
 export async function POST(request: Request) {
     try {
@@ -11,6 +13,16 @@ export async function POST(request: Request) {
                 { message: 'Missing required fields' },
                 { status: 400 }
             );
+        }
+
+        // Connect to database and save
+        try {
+            await dbConnect();
+            const newContact = new Contact({ name, email, subject, message });
+            await newContact.save();
+            console.log("Contact saved to database");
+        } catch (dbError) {
+            console.error("Database saving error:", dbError);
         }
 
         const transporter = nodemailer.createTransport({
