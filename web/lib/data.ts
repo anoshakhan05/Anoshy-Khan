@@ -8,12 +8,12 @@ export const projects = [
         links: { demo: "https://lumina-ai-saas-mx5h.vercel.app/", list: "#" }
     },
     {
-        title: "Noir Threads",
-        category: "E-Commerce / Fashion",
-        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=80",
-        description: "Redefining the silhouette of modern luxury. Premium apparel and avant-garde streetwear platform.",
-        tags: ["Next.js", "E-commerce", "Fashion"],
-        links: { demo: "https://b-xdw1.vercel.app/", list: "#" }
+        title: "Lumina Dental Care",
+        category: "Healthcare / Clinic",
+        image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&auto=format&fit=crop&q=80",
+        description: "Comprehensive dental care platform featuring premium services, patient stories, and modern aesthetic design.",
+        tags: ["React", "Healthcare", "Tailwind"],
+        links: { demo: "https://dentist-sable.vercel.app/", list: "#" }
     },
     {
         title: "Aura Dashboard",
@@ -22,6 +22,14 @@ export const projects = [
         description: "Comprehensive analytics dashboard featuring real-time data visualization and management tools.",
         tags: ["React", "Analytics", "Admin"],
         links: { demo: "https://dashboard-design-whp7.vercel.app", list: "#" }
+    },
+    {
+        title: "Noir Threads",
+        category: "E-Commerce / Fashion",
+        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=80",
+        description: "Redefining the silhouette of modern luxury. Premium apparel and avant-garde streetwear platform.",
+        tags: ["Next.js", "E-commerce", "Fashion"],
+        links: { demo: "https://b-xdw1.vercel.app/", list: "#" }
     },
     {
         title: "Life Upgrade",
