@@ -8,20 +8,20 @@ export const projects = [
         links: { demo: "https://lumina-ai-saas-mx5h.vercel.app/", list: "#" }
     },
     {
-        title: "Lumina Dental Care",
-        category: "Healthcare / Clinic",
-        image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&auto=format&fit=crop&q=80",
-        description: "Comprehensive dental care platform featuring premium services, patient stories, and modern aesthetic design.",
-        tags: ["React", "Healthcare", "Tailwind"],
-        links: { demo: "https://dentist-sable.vercel.app/", list: "#" }
-    },
-    {
         title: "Aura Dashboard",
         category: "UI/UX Design & Dev",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
         description: "Comprehensive analytics dashboard featuring real-time data visualization and management tools.",
         tags: ["React", "Analytics", "Admin"],
         links: { demo: "https://dashboard-design-whp7.vercel.app", list: "#" }
+    },
+    {
+        title: "Dental care",
+        category: "Healthcare / Clinic",
+        image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&auto=format&fit=crop&q=80",
+        description: "Comprehensive dental care platform featuring premium services, patient stories, and modern aesthetic design.",
+        tags: ["React", "Healthcare", "Tailwind"],
+        links: { demo: "https://dentist-sable.vercel.app/", list: "#" }
     },
     {
         title: "Noir Threads",
