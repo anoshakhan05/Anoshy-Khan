@@ -14,6 +14,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://anoshawaseem.site"),
   title: "Anosha Waseem | Digital Marketer & Web Developer",
   description: "Premium digital marketing and web development portfolio of Anosha Waseem. Elevate your brand with high-converting strategies and immersive web experiences.",
 };

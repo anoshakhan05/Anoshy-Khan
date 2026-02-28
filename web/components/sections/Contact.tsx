@@ -78,7 +78,9 @@ export function Contact() {
                                 if (response.ok) {
                                     window.location.href = '/success';
                                 } else {
-                                    alert('Failed to send message. Please try again.');
+                                    const errorData = await response.json().catch(() => ({}));
+                                    alert(`Failed to send message: ${errorData.message || ''} ${errorData.error || 'Please try again.'}`);
+                                    console.error("Server API Error details:", errorData);
                                 }
                             } catch (error) {
                                 console.error('Error:', error);

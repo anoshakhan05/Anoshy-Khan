@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 
         const mailOptions = {
             from: email, // Sender address (this might be overridden by Gmail to be the authenticated user)
-            to: process.env.EMAIL_USER, // List of receivers
+            to: 'codewithanosha@gmail.com', // List of receivers
             subject: `Portfolio: ${subject} from ${name}`,
             text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
             html: `
