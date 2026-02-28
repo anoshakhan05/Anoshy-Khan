@@ -7,7 +7,6 @@ export async function POST(request: Request) {
     try {
         const { name, email, subject, message } = await request.json();
 
-        // Validate input
         if (!name || !email || !subject || !message) {
             return NextResponse.json(
                 { message: 'Missing required fields' },
@@ -15,7 +14,6 @@ export async function POST(request: Request) {
             );
         }
 
-        // Connect to database and save
         try {
             await dbConnect();
             const newContact = new Contact({ name, email, subject, message });
@@ -33,21 +31,10 @@ export async function POST(request: Request) {
             },
         });
 
-        // Verify connection configuration
-        try {
-            await transporter.verify();
-            console.log("Transporter ready");
-        } catch (error) {
-            console.error("Transporter verification failed:", error);
-            return NextResponse.json(
-                { message: 'Server configuration error', error: (error as Error).toString() },
-                { status: 500 }
-            );
-        }
-
         const mailOptions = {
-            from: email, // Sender address (this might be overridden by Gmail to be the authenticated user)
-            to: 'codewithanosha@gmail.com', // List of receivers
+            from: process.env.EMAIL_USER,
+            to: 'codewithanosha@gmail.com',
+            replyTo: email,
             subject: `Portfolio: ${subject} from ${name}`,
             text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
             html: `
@@ -60,8 +47,17 @@ export async function POST(request: Request) {
             `,
         };
 
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Email sent: ' + info.response);
+        await new Promise((resolve, reject) => {
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    console.error('Error sending email:', err);
+                    reject(err);
+                } else {
+                    console.log('Email sent successfully:', info.response);
+                    resolve(info);
+                }
+            });
+        });
 
         return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
 
